@@ -1,3 +1,4 @@
+
 // Following is the Binary Tree node structure
 /**************
 class BinaryTreeNode {
@@ -15,61 +16,56 @@ class BinaryTreeNode {
 
 ***************/
 #include<stack>
-#include<queue>
-void zigZagOrder(BinaryTreeNode<int> *root) {
-    // Write your code here
-       if(root==nullptr)
-    {
-        return;
-    }
-    stack <BinaryTreeNode<int>*> Q1;
-    stack <BinaryTreeNode<int>*> Q2;
-    
-    
-    Q1.push(root);
-    while(!Q1.empty())
-    {
-        if(Q1.top()->left!=nullptr)
-        {
-           Q2.push(Q1.top()->left); 
-        }
-        if(Q1.top()->right!=nullptr)
-        {
-           Q2.push(Q1.top()->right); 
-        }
-        cout<<Q1.top()->data<<" ";
-    
-
-        Q1.pop();
-        if(Q1.empty())
-        {
-            cout<<endl;
-        }
-        
-        if(Q1.empty()==true&&Q2.empty()==false)
-        {
-            
-            while(!Q2.empty())
-            {
-                  if(Q2.top()->right!=nullptr)
-                {
-                    Q1.push(Q2.top()->right); 
-                }
-                 if(Q2.top()->left!=nullptr)
-                {
-                Q1.push(Q2.top()->left); 
-                 }
+void zigZagOrder(BinaryTreeNode<int> *root)
+{
+     stack<BinaryTreeNode<int>*> s1;
+      stack<BinaryTreeNode<int>*> s2;
+    s1.push(root);
+while(s1.empty()==false or s2.empty()==false) 
+{   while(!s1.empty())
+   {
+       BinaryTreeNode<int> *curr=s1.top();
+       s1.pop();
+       cout<<curr->data<<" ";
+          if(curr->left!=nullptr)
+          {
+              s2.push(curr->left);
               
-                cout<<Q2.top()->data<<" ";
-                Q2.pop();
-        if(Q2.empty())
-        {
-            cout<<endl;
-        }
-
-           }
-        }
+          } 
+       if(curr->right!=nullptr)
+          {
+              s2.push(curr->right);
+              
+          }
+   }
+    if(s1.empty())
+    {
+        cout<<endl;
     }
-
-
+ while(!s2.empty())
+ {  
+     BinaryTreeNode<int> *curr2=s2.top();
+     s2.pop();
+     cout<<curr2->data<<" ";
+      if(curr2->right!=nullptr)
+    {
+      s1.push(curr2->right);
+              
+      } 
+    if(curr2->left!=nullptr)
+     {
+        s1.push(curr2->left);
+              
+      }
+     
+     
+   
+  }
+    if(s2.empty())
+    {
+        cout<<endl;
+    }
+ 
+}
+return;
 }
