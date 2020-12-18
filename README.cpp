@@ -1,2 +1,2 @@
 # trees-questions
-Contains good questions on trees for interview preparation.
+Contains good questions on trees for interview preparation and clearing basis.
